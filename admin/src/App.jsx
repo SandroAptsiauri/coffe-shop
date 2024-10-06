@@ -3,11 +3,11 @@ import CoffeForm from "./components/CoffeForm";
 
 function App() {
   const onFormSubmit = (coffeName, coffePrice, coffeDescription) => {
-    fetch("/api/v1/coffes", {
+    fetch("https://crudapi.co.uk/api/v1/coffees", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`,
+        Authorization: `Bearer bA7pU5Ya746cdu5EKskHs9iv6ezk79SC3lO0F38S1TXz7moeLA`,
       },
       body: JSON.stringify([{ coffeName, coffePrice, coffeDescription }]),
     })
