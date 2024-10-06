@@ -3,11 +3,11 @@ import CoffeForm from "./components/CoffeForm";
 
 function App() {
   const onFormSubmit = (coffeName, coffePrice, coffeDescription) => {
-    fetch("/api/v1/coffees", {
+    fetch("/api/v1/coffes", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${import.meta.env.REACT_APP_API_KEY}`,
+        Authorization: `Bearer ${import.meta.env.VITE_API_KEY}`,
       },
       body: JSON.stringify([{ coffeName, coffePrice, coffeDescription }]),
     })
