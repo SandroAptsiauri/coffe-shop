@@ -1,16 +1,22 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
-export default function CoffeForm({ onFormSubmit }) {
-  const [coffeName, setCoffeName] = useState("");
-  const [coffePrice, setCoffePrice] = useState("");
-  const [coffeDescription, setCoffeDescription] = useState("");
+export default function CoffeForm({
+  onFormSubmit,
+  coffeName,
+  coffePrice,
+  coffeDescription,
+}) {
+  const coffeNameRef = useRef();
+  const coffePriceRef = useRef();
+  const coffeDescriptionRef = useRef();
 
   const onSubmit = (e) => {
     e.preventDefault();
-    onFormSubmit(coffeName, coffePrice, coffeDescription);
-    setCoffeName("");
-    setCoffePrice("");
-    setCoffeDescription("");
+    onFormSubmit(
+      coffeNameRef.current.value,
+      coffePriceRef.current.value,
+      coffeDescriptionRef.current.value
+    );
   };
   return (
     <div>
@@ -18,19 +24,22 @@ export default function CoffeForm({ onFormSubmit }) {
         <input
           type="text"
           placeholder="Coffe Name"
-          onChange={(e) => setCoffeName(e.target.value)}
+          defaultValue={coffeName}
+          ref={coffeNameRef}
           required
         />
         <input
           type="number"
           placeholder="Coffe Price"
-          onChange={(e) => setCoffePrice(e.target.value)}
+          defaultValue={coffePrice}
+          ref={coffePriceRef}
           required
         />
         <input
           type="text"
           placeholder="Coffe Description"
-          onChange={(e) => setCoffeDescription(e.target.value)}
+          defaultValue={coffeDescription}
+          ref={coffeDescriptionRef}
           required
         />
         <button>Submit</button>
